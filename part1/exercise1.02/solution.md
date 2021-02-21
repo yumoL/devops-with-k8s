@@ -1,8 +1,8 @@
-[code](https://github.com/yumoL/devops-with-k8s/blob/master/part2/exercise1.02/index.js)
+[code](https://github.com/yumoL/devops-with-k8s/blob/master/part1/exercise1.02/index.js)
 
 [Dockerfile](https://github.com/yumoL/devops-with-k8s/blob/master/part1/exercise1.02/Dockerfile)
 
-Use `kubectl create deployment random-string --image=yumol/random-string` for deployment
+Use `kubectl create deployment hell-server --image=yumol/hello-server` for deployment
 
 Result
 
