@@ -5,3 +5,5 @@
 [exercise 1.03](https://github.com/yumoL/devops-with-k8s/blob/master/part1/exercise1.03/solution.md)
 
 [exercise 1.04](https://github.com/yumoL/devops-with-k8s/blob/master/part1/exercise1.04/solution.md)
+
+[exercise 1.05](https://github.com/yumoL/devops-with-k8s/blob/master/part1/exercise1.05/solution.md)
