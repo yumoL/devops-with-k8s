@@ -2,7 +2,7 @@
 
 [Dockerfile](https://github.com/yumoL/devops-with-k8s/blob/master/part1/exercise1.04/Dockerfile)
 
-Use `kubectl create deployment hell-server --image=yumol/hello-server` for deployment
+[deployment.yaml](https://github.com/yumoL/devops-with-k8s/blob/master/part1/exercise1.04/manifests/deployment.yaml) 
 
 Result
 
