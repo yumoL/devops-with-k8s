@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-string-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: random-string
+  template:
+    metadata:
+      labels:
+        app: random-string
+    spec:
+      volumes:
+        - name: shared-file
+          emptyDir: {}
+      containers:
+        - name: random-string-generator
+          image: yumol/random-string-generator:v1
+          volumeMounts:
+          - name: shared-file
+            mountPath: /usr/src/app/files
+        - name: random-string-reader
+          image: yumol/random-string-reader:v1
+          volumeMounts:
+          - name: shared-file
+            mountPath: /usr/src/app/files

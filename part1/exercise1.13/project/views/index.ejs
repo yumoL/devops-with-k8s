@@ -1,0 +1,16 @@
+<html lang="en">
+<main>
+  <div>
+    <img src="image.jpg" />
+    <ul>
+      <% todos.forEach(function(todo) { %>
+        <li>
+          <p>
+            <%= todo.content %>
+          </p>
+        </li>
+        <% }); %>
+    </ul>
+  </div>
+</main>
+</html>

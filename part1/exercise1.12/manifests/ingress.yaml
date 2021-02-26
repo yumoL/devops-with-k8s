@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: image-ingress
+  annotations:
+    #use "/pingpong" path whilst the ping-pong application listens on "/"
+    traefik.ingress.kubernetes.io/rule-type: "PathPrefixStrip"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: image-fetcher-svc
+          servicePort: 2345
