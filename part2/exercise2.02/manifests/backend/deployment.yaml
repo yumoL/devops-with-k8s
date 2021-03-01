@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      volumes:
+        - name: shared-file
+          persistentVolumeClaim:
+            claimName: backend-claim
+      containers:
+        - name: backend
+          image: yumol/backend:1.0
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 2345
+          volumeMounts:
+          - name: shared-file
+            mountPath: /usr/src/app/files

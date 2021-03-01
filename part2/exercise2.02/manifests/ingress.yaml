@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: project-ingress
+  annotations:
+    #use "/pingpong" path whilst the ping-pong application listens on "/"
+    traefik.ingress.kubernetes.io/rule-type: "PathPrefixStrip"
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /backend
+        backend:
+          serviceName: backend-svc
+          servicePort: 2345
+      - path: /
+        backend:
+          serviceName: frontend-svc
+          servicePort: 2345

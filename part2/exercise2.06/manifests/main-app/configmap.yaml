@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: main-env
+  namespace: pingpong-ns
+data:
+  message: "hello"
