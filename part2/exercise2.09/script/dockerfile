@@ -1,0 +1,9 @@
+FROM alpine:3.13
+
+WORKDIR /home
+
+RUN apk add --no-cache bash curl
+COPY . .
+RUN chmod +x ./todo.sh
+
+ENTRYPOINT ["/bin/bash", "./todo.sh"]
