@@ -12,6 +12,6 @@ I compared DBaaS to PVCs with a database image from the following perspectives:
     scripts on time to backup the data outside of the K8s cluster.
     
 - Cost: Running a database on DBaaS may be more expensive than using PVCs, which is reasonable as users need to pay for the DBaaS experts, who are responsible for
-providing the features of easy maintenance, high availability, and automatic backups (as mentioned above). Once a business reaches a specific size, it may be more economical to hire their database experts to build and maintain their database, just like Google and Amazon do.
+providing the features of easy maintenance, high availability, and automatic backups (as mentioned above). Once a business reaches a specific size, it may be more economical to hire their database experts to build and maintain their database, just like what Google and Amazon do.
 
 - Security: When using DBaaS, users have no direct access to the servers that are running their database, which means they cannot influence the physical security of the servers. As a result, for some organizations that maintain sensitive data, DBaaS may not be an option. 
