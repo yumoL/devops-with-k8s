@@ -15,3 +15,8 @@ I compared DBaaS to PVCs with a database image from the following perspectives:
 providing the features of easy maintenance, high availability, and automatic backups (as mentioned above). Once a business reaches a specific size, it may be more economical to hire their database experts to build and maintain their database, just like what Google and Amazon do.
 
 - Security: When using DBaaS, users have no direct access to the servers that are running their database, which means they cannot influence the physical security of the servers. As a result, for some organizations that maintain sensitive data, DBaaS may not be an option. 
+
+# Exercise 3.07
+I am going to use the Postgres image with PVCs in my project for the following reasons:
+- I already have the image with PVCs that works well on my K8s cluster.
+- The project is quite small and there is no need for high availability or scalability, so it is not really necessary to use Cloud SQL here. 
