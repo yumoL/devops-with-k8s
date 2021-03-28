@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: pingpong-ns
+resources:
+- manifests/main-app/deployment.yaml
+- manifests/main-app/service.yaml
+- manifests/main-app/autoscaler.yaml
+- manifests/pingpong/deployment.yaml
+- manifests/pingpong/service.yaml
+- manifests/pingpong/autoscaler.yaml
+- manifests/postgres/statefulset.yaml
+- manifests/configmap.yaml
+- manifests/ingress.yaml
+- manifests/sealedsecret.yaml
+images:
+- name: MAIN/IMAGE
+  newName: yumol/main:v3.2
+- name: PINGPONG/IMAGE
+  newName: yumol/pingpong-generator:v3.1

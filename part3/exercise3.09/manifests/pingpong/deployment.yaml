@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pingpong-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pingpong
+  template:
+    metadata:
+      labels:
+        app: pingpong
+    spec:
+      containers:
+        - name: pingpong-generator
+          image: PINGPONG/IMAGE
+          imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "150m"
+              memory: "100Mi"
+          ports:
+          - containerPort: 2345
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: main-env
+                  key: db_host
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: main-env
+                  key: db_user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-pwd
+                  key: DB_PASSWORD
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: main-env
+                  key: db_name

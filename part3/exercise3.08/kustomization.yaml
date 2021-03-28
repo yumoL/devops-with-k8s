@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: project-ns
+resources:
+- manifests/configmap.yaml
+- manifests/persistentvolumeclaim.yaml
+- manifests/sealedsecret.yaml
+- manifests/postgres/statefulset.yaml
+- manifests/backend/service.yaml
+- manifests/backend/deployment.yaml
+- manifests/backend/autoscaler.yaml
+- manifests/ingress.yaml
+- manifests/frontend/service.yaml
+- manifests/frontend/deployment.yaml
+
+images:
+- name: POSTGRES/IMAGE
+  newName: postgres:13.0
+- name: FRONTEND/IMAGE
+  newName: yumol/frontend:3.3
+- name: BACKEND/IMAGE
+  newName: yumol/backend:3.10
