@@ -18,5 +18,5 @@ providing the features of easy maintenance, high availability, and automatic bac
 
 # Exercise 3.07
 I am going to use the Postgres image with PVCs in my project for the following reasons:
-- I already have the image with PVCs that works well on my K8s cluster.
-- The project is quite small and there is no need for high availability or scalability, so it is not really necessary to use Cloud SQL here. 
+- I already have the Postgres image with PVCs that works well on my K8s cluster.
+- The project is relatively small, and there is no need for high availability or scalability, so it is unnecessary to use Cloud SQL here. 
