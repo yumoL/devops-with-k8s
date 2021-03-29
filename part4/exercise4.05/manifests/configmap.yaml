@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: project-env
+data:
+  db_host: "postgres-svc"
+  db_user: postgres
+  db_name: "projectdb"
