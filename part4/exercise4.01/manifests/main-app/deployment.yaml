@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: main-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: main
+  template:
+    metadata:
+      labels:
+        app: main
+    spec:
+      containers:
+        - name: main
+          image: MAIN/IMAGE
+          imagePullPolicy: Always
+          readinessProbe:
+            initialDelaySeconds: 10 # Initial delay until the readiness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+               path: /healthz
+               port: 3000
+          resources:
+            limits:
+              cpu: "150m"
+              memory: "100Mi"
+          env:
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: main-env
+                  key: message
+        
