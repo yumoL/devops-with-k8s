@@ -6,11 +6,11 @@ spec:
   rules:
   - http:
       paths:
-      - path: /*
+      - path: /
         backend:
           serviceName: frontend-svc
-          servicePort: 80
-      - path: /backend/*
+          servicePort: 2345
+      - path: /backend
         backend:
           serviceName: backend-svc
-          servicePort: 80
+          servicePort: 2345

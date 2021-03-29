@@ -5,8 +5,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  # storageClassName: ""
-  # volumeName: fileserver
+  storageClassName: manual
   resources:
     requests:
       storage: 0.2Gi

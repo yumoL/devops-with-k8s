@@ -20,7 +20,7 @@ const imagePath = path.join(dir, imageName)
 // mainly for GKE ingress health check 
 // as this health check requires the server responses 200 at "/"
 app.get('/', async (request, response) => {
-  response.status(200).send('Server is up')
+  response.status(200).send('Server is up...')
 })
 
 app.get('/backend/image', async (request, response) => {

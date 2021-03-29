@@ -8,11 +8,13 @@ resources:
 - manifests/sealedsecret.yaml
 - manifests/postgres/statefulset.yaml
 - manifests/backend/service.yaml
-- manifests/backend/deployment.yaml
-- manifests/backend/autoscaler.yaml
+- manifests/backend/rollout.yaml
+#- manifests/backend/deployment.yaml
+#- manifests/backend/autoscaler.yaml
 - manifests/ingress.yaml
 - manifests/frontend/service.yaml
 - manifests/frontend/deployment.yaml
+- manifests/persistentvolume.yaml
 
 images:
 - name: POSTGRES/IMAGE
