@@ -3,7 +3,7 @@ const app = express()
 const path = require('path')
 const cors = require('cors')
 const { fetchFile } = require('./controllers/imageController')
-const { getTodos, addTodos, markDone } = require('./controllers/todoController')
+const { getTodos, addTodos, markDone, publishTodo } = require('./controllers/todoController')
 const morgan = require('morgan')
 const { QueryTypes } = require('sequelize')
 const { sequelize } = require('./models')
@@ -37,12 +37,14 @@ app.get('/backend/todos', async (request, response) => {
 app.post('/backend/todos', async (request, response) => {
   const newTodo = request.body
   const addedTodo = await addTodos(newTodo)
+  publishTodo(true, addedTodo)
   response.send(addedTodo)
 })
 
 app.put('/backend/todos/:id', async (request, response) => {
   id = request.params.id
   const updatedTodo = await markDone(id)
+  publishTodo(false, updatedTodo)
   response.send(updatedTodo)
 })
 
