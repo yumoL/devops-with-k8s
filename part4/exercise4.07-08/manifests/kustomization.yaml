@@ -20,12 +20,12 @@ resources:
 images:
 - name: BACKEND/IMAGE
   newName: yumol/backend
-  newTag: 011a48cc2dc64653f1de96bd2be1a93ea1d530a3
+  newTag: 7512e7a50bb40096aa9ea5c9ca706b0b1c0cb5f1
 - name: BROADCASTER/IMAGE
   newName: yumol/broadcaster
-  newTag: 011a48cc2dc64653f1de96bd2be1a93ea1d530a3
+  newTag: 7512e7a50bb40096aa9ea5c9ca706b0b1c0cb5f1
 - name: FRONTEND/IMAGE
   newName: yumol/frontend
-  newTag: 011a48cc2dc64653f1de96bd2be1a93ea1d530a3
+  newTag: 7512e7a50bb40096aa9ea5c9ca706b0b1c0cb5f1
 - name: POSTGRES/IMAGE
   newName: postgres:13.0
