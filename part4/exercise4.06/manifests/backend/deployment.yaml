@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      volumes:
+        - name: shared-file
+          persistentVolumeClaim:
+            claimName: backend-claim
+      containers:
+        - name: backend
+          image: BACKEND/IMAGE
+          imagePullPolicy: Always
+          readinessProbe:
+            initialDelaySeconds: 10 # Initial delay until the readiness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+               path: /backend/healthz
+               port: 3001
+          livenessProbe:
+            initialDelaySeconds: 20 # Initial delay until the liveness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+               path: /backend/healthz
+               port: 3001
+          resources: 
+            limits:
+              cpu: "150m"
+              memory: "100Mi"
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: project-env
+                  key: db_host
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: project-env
+                  key: db_user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-pwd
+                  key: DB_PASSWORD
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: project-env
+                  key: db_name
+            - name: NATS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: project-env
+                  key: nats_url
+          volumeMounts:
+          - name: shared-file
+            mountPath: /usr/src/app/files
+            subPath: app-files
