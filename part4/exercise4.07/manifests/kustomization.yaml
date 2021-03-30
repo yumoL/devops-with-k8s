@@ -1,15 +1,15 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: project-ns
-resources:
 #- analysistemplate.yaml
+#- backend/rollout.yaml
+#- backend/autoscaler.yaml
+resources:
 - configmap.yaml
 - sealedsecret.yaml
 - postgres/statefulset.yaml
 - backend/service.yaml
-#- backend/rollout.yaml
 - backend/deployment.yaml
-#- backend/autoscaler.yaml
 - ingress.yaml
 - frontend/service.yaml
 - frontend/deployment.yaml
@@ -17,14 +17,14 @@ resources:
 - persistentvolumeclaim.yaml
 
 images:
-- name: POSTGRES/IMAGE
-  newName: postgres:13.0
-- name: FRONTEND/IMAGE
-  newName: yumol/frontend
-  newTag: "4.05"
 - name: BACKEND/IMAGE
   newName: yumol/backend
-  newTag: "4.06"
+  newTag: 37237213f535acf7227ff53ca054578a05cf471e
 - name: BROADCASTER/IMAGE
   newName: yumol/broadcaster
-  newTag: "4.06"
+  newTag: 37237213f535acf7227ff53ca054578a05cf471e
+- name: FRONTEND/IMAGE
+  newName: yumol/frontend
+  newTag: 37237213f535acf7227ff53ca054578a05cf471e
+- name: POSTGRES/IMAGE
+  newName: postgres:13.0
