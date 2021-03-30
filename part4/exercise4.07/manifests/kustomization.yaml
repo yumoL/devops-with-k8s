@@ -15,6 +15,7 @@ resources:
 - frontend/deployment.yaml
 - broadcaster/deployment.yaml
 - persistentvolumeclaim.yaml
+- persistentvolume.yaml
 
 images:
 - name: BACKEND/IMAGE
