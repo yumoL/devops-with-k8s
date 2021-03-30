@@ -11,8 +11,8 @@ const nc = NATS.connect({
 
 
 nc.subscribe('todo_list', { queue: 'todo.workers' }, async (todoMsg) => {
-  console.log(JSON.stringify(todoMsg))
-  console.log(chatId)
+  // console.log(JSON.stringify(todoMsg))
+  // console.log(chatId)
   await bot.telegram.sendMessage(chatId, JSON.stringify(todoMsg))
 
 })
