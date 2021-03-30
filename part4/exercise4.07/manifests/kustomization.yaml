@@ -14,7 +14,7 @@ resources:
 - frontend/service.yaml
 - frontend/deployment.yaml
 - broadcaster/deployment.yaml
-- persistentvolume.yaml
+- persistentvolumeclaim.yaml
 
 images:
 - name: POSTGRES/IMAGE
