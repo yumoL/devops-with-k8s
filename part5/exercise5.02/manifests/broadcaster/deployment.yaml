@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: broadcaster-dep
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: broadcaster
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: broadcaster
+    spec:
+      containers:
+      - env:
+        - name: TELEGRAM_BOT_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: TELEGRAM_BOT_TOKEN
+              name: postgres-pwd
+        - name: CHAT_ID
+          valueFrom:
+            secretKeyRef:
+              key: CHAT_ID
+              name: postgres-pwd
+        - name: NATS_URL
+          valueFrom:
+            configMapKeyRef:
+              key: nats_url
+              name: project-env
+        image: BROADCASTER/IMAGE
+        imagePullPolicy: Always
+        name: broadcaster
+---

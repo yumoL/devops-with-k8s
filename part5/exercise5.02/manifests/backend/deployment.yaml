@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      annotations:
+        linkerd.io/inject: enabled
+      labels:
+        app: backend
+    spec:
+      containers:
+      - env:
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: db_host
+              name: project-env
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              key: db_user
+              name: project-env
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: DB_PASSWORD
+              name: postgres-pwd
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: db_name
+              name: project-env
+        - name: NATS_URL
+          valueFrom:
+            configMapKeyRef:
+              key: nats_url
+              name: project-env
+        image: BACKEND/IMAGE
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /backend/healthz
+            port: 3001
+          initialDelaySeconds: 20
+          periodSeconds: 5
+        name: backend
+        readinessProbe:
+          httpGet:
+            path: /backend/healthz
+            port: 3001
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        resources:
+          limits:
+            cpu: 150m
+            memory: 100Mi
+        volumeMounts:
+        - mountPath: /usr/src/app/files
+          name: shared-file
+          subPath: app-files
+      volumes:
+      - name: shared-file
+        persistentVolumeClaim:
+          claimName: backend-claim
+---
