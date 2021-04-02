@@ -1,0 +1,40 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: pingpong-serverless
+spec:
+  template:
+    metadata:
+      name: pingpong-serverless-v1
+    spec:
+      containers:
+        - image: PINGPONG/IMAGE
+          env:
+            - name: RUNNING_PORT
+              value: "8080"
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: main-env
+                  key: db_host
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: main-env
+                  key: db_user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-pwd
+                  key: DB_PASSWORD
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: main-env
+                  key: db_name
+          
+  # traffic: # traffic enables us to split traffic between multiple revisions!
+  # - revisionName: helloworld-go-dwk-message-v1
+  #   percent: 50
+  # - revisionName: helloworld-go-dwk-message-v2
+  #   percent: 50
