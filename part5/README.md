@@ -45,7 +45,7 @@ OpenShift is originally designed for managing a single cluster. Although it has 
   - NGINX: outside of the course
 
 - Service mesh:
-  - Linkerd: monitor the project running on a kubernetes ckuster
+  - Linkerd: monitor the project running on a kubernetes cluster
 
 - Container Runtime:
   - Singularity: outside of the course
