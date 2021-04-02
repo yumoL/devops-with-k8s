@@ -1,4 +1,4 @@
-# Exercise 3.04
+# Exercise 5.04
 I will try to describe why Rancher is "better" than OpenShift from the following perspectives:
 
 - Community support: Rancher is open-source, which means users can ask questions and discuss potential solutions in Rancher's user community when they encounter problems. Although OpenShift also has open-source versions, it does not have strong communiy support but relies more on documentation. Although OpenShift provides custom support to subscribed users, it is not helpful for individual developers who use OpenShift clusters maintained by their organizations. I used CSC Rahti 
